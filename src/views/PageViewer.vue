@@ -8,6 +8,7 @@
 <script>
 export default {
   props: ["index"],
+  inject: ["$pages"],
   created() {
     const page = this.$pages.getSinglePage(this.index);
     this.page = page;
