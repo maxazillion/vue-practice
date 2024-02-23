@@ -52,7 +52,21 @@
 
 <script>
 export default {
-  props: ["pageCreated"],
+  emits: {
+    //Validation is optional
+    pageCreated({ pageTitle, content, link }) {
+      if (!pageTitle) {
+        return false;
+      }
+      if (!content) {
+        return false;
+      }
+      if (!link || !link.text || !link.url) {
+        return false;
+      }
+      return true;
+    },
+  },
   computed: {
     isFormInvalid() {
       return (
@@ -75,7 +89,8 @@ export default {
         alert("please fill out form");
         return;
       }
-      this.pageCreated({
+
+      this.$emit("pageCreated", {
         pageTitle: this.pageTitle,
         content: this.pageContent,
         link: {
