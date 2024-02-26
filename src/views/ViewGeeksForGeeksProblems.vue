@@ -5,9 +5,29 @@
       <textarea
         v-model="$pages.geeksForGeeksProblems[props.index].code"
         class="code-editor"
-      ></textarea>
+      />
     </div>
-    <button @click="handleBackClick" class="btn btn-primary">Back</button>
+    <div class="d-flex justify-content-between">
+      <div>
+        <button
+          @click="
+            () =>
+              copyToClipboard($pages.geeksForGeeksProblems[props.index].code)
+          "
+          class="btn btn-primary me-2"
+        >
+          Copy Text
+        </button>
+        <a
+          href="https://codepen.io/pen/?editors=1011"
+          target="_blank"
+          class="btn"
+        >
+          Go to Code Editor
+        </a>
+      </div>
+      <button @click="handleBackClick" class="btn btn-secondary">Back</button>
+    </div>
   </div>
 </template>
 
@@ -18,9 +38,18 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const $pages = inject("$pages");
 const props = defineProps(["index"]);
+const $toast = inject("$toast");
+const $bus = inject("$bus");
 
 function handleBackClick() {
   router.push({ path: "/problems" });
+}
+
+function copyToClipboard(text) {
+  const textToCopy = text;
+  navigator.clipboard.writeText(textToCopy);
+  $toast.changeMsg("text coppied to clipboard");
+  $bus.$emit("change-toast", { text });
 }
 </script>
 
@@ -34,7 +63,7 @@ function handleBackClick() {
   border: 1px solid #ccc;
   border-radius: 5px;
   resize: vertical;
-  background-color: #000; /* Set black background color */
-  color: #fff; /* Set white text color */
+  background-color: #000;
+  color: #fff;
 }
 </style>

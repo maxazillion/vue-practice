@@ -63,9 +63,7 @@ export default {
   },
   computed: {
     publishedPaged() {
-      console.log("this");
       if (!this.pages) {
-        console.log("this");
         return [];
       }
       return this.pages.filter((p) => p.published);
