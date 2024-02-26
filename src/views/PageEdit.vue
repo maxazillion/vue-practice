@@ -67,6 +67,7 @@ function submit() {
     props,
     page,
   });
+  bus.$emit("change-toast", { text: "page updated!" });
 
   goToPagesList();
 }
@@ -81,6 +82,7 @@ function deletePage() {
   bus.$emit("page-deleted", {
     props,
   });
+  bus.$emit("change-toast", { text: "page deleted!" });
 
   goToPagesList();
 }

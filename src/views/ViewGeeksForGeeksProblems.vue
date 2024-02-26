@@ -38,7 +38,6 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const $pages = inject("$pages");
 const props = defineProps(["index"]);
-const $toast = inject("$toast");
 const $bus = inject("$bus");
 
 function handleBackClick() {
@@ -48,8 +47,7 @@ function handleBackClick() {
 function copyToClipboard(text) {
   const textToCopy = text;
   navigator.clipboard.writeText(textToCopy);
-  $toast.changeMsg("text coppied to clipboard");
-  $bus.$emit("change-toast", { text });
+  $bus.$emit("change-toast", { text: "text coppied to clipboard!" });
 }
 </script>
 

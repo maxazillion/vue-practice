@@ -12,13 +12,6 @@ export default {
   created() {
     const page = this.$pages.getSinglePage(this.index);
     this.page = page;
-
-    // this.$watch(
-    //   () => this.$route.params,
-    //   (newParams) => {
-    //     this.page = this.$pages.getSinglePage(newParams.index);
-    //   }
-    // );
   },
   data() {
     return {

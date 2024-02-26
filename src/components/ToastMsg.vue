@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="toasty">
     <span>{{ message }}</span>
-    <button @click="hideToast">Close</button>
+    <button class="btn" @click="hideToast">Close</button>
   </div>
 </template>
 
@@ -15,8 +15,8 @@ export default {
   },
   inject: ["$toast", "$bus"],
   created() {
-    this.$bus.$on("change-toast", () => {
-      this.showToast(this.$toast.getToastMsg());
+    this.$bus.$on("change-toast", ({ text }) => {
+      this.showToast(text);
     });
   },
   methods: {
@@ -51,6 +51,7 @@ export default {
   background-color: transparent;
   border: none;
   color: #fff;
+  background-color: #832424;
   cursor: pointer;
   margin-left: 10px;
 }

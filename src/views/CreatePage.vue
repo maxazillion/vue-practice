@@ -75,6 +75,7 @@ function submitForm() {
 
   pages.addPage(newPage);
   bus.$emit("page-created", newPage);
+  bus.$emit("change-toast", { text: "page created!" });
 
   router.push({ path: "/pages" });
 }

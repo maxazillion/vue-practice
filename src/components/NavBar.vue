@@ -34,7 +34,7 @@
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="changeTheme()">
-          toggle
+          {{ theme == "dark" ? "light" : "dark" }}
         </button>
       </form>
     </div>
