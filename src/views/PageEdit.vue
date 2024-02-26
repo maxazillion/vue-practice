@@ -56,7 +56,6 @@ import { defineProps, inject } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-console.log(router);
 const pages = inject("$pages");
 const bus = inject("$bus");
 const props = defineProps(["index"]);

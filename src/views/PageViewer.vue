@@ -1,6 +1,6 @@
 <template>
   <div v-if="page" class="container">
-    <h1 class="emphasize">{{ page.pageTitle }}</h1>
+    <h2>{{ page.pageTitle }}</h2>
     <p>{{ page.content }}</p>
   </div>
 </template>
@@ -32,8 +32,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.emphasize {
-  color: blue;
-}
-</style>

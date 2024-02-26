@@ -4,6 +4,9 @@ import CreatePage from "./views/CreatePage.vue";
 import ManagePages from "./views/ManagePages";
 import PagesList from "./views/PagesList.vue";
 import PageEdit from "./views/PageEdit";
+import GeeksForGeeksList from "./views/GeeksForGeeksList.vue";
+import ViewGeeksForGeeksProblems from "./views/ViewGeeksForGeeksProblems.vue";
+import ProblemsView from "./views/ProblemsView.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -18,6 +21,22 @@ const router = createRouter({
         { path: ":index/edit", component: PageEdit, props: true },
       ],
     },
+    {
+      path: "/problems",
+      component: ProblemsView,
+      children: [
+        {
+          path: "",
+          component: GeeksForGeeksList,
+          props: true,
+        },
+        {
+          path: ":index/view",
+          component: ViewGeeksForGeeksProblems,
+          props: true,
+        },
+      ],
+    }, // passes params as props
   ],
 });
 

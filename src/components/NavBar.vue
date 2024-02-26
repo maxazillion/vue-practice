@@ -22,6 +22,15 @@
             >Pages
           </router-link>
         </li>
+        <li>
+          <router-link
+            to="/problems"
+            active-class="active"
+            class="nav-link m-2"
+            aria-current="page"
+            >Problems
+          </router-link>
+        </li>
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="changeTheme()">
@@ -54,6 +63,11 @@ export default {
   },
   computed: {
     publishedPaged() {
+      console.log("this");
+      if (!this.pages) {
+        console.log("this");
+        return [];
+      }
       return this.pages.filter((p) => p.published);
     },
   },
