@@ -25,7 +25,7 @@ export default {
       this.show = true;
       setTimeout(() => {
         this.hideToast();
-      }, 2000); // Adjust duration as needed
+      }, 2000);
     },
     hideToast() {
       this.show = false;

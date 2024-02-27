@@ -3,8 +3,17 @@
     :class="[`navbar-${theme}`, `bg-${theme}`, 'navbar', 'navbar-expanded-lg']"
   >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"> My Vue </a>
+      <a class="navbar-brand" href="#"> Jason's Practice </a>
       <ul class="navbar-nav me-auto d-flex flex-row">
+        <li>
+          <router-link
+            to="/"
+            active-class="active"
+            class="nav-link m-2"
+            aria-current="page"
+            >About
+          </router-link>
+        </li>
         <nav-bar-link
           v-for="(page, index) in publishedPaged"
           class="nav-item"

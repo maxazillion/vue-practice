@@ -1,7 +1,7 @@
 [
   {
     "link": { "text": "Page1", "url": "index.html" },
-    "pageTitle": "Page 1",
+    "pageTitle": "Explanation",
     "content": "This is a page for the purpose of testing. Part of this application is to practice navigation with this being one entry in the array of nav items. Credit to Envato Tuts+ for this tutorial code https://www.youtube.com/watch?v=1GNsWa_EZdw.",
     "published": true
   }
