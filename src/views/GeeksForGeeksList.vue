@@ -5,6 +5,7 @@
       <thead>
         <tr>
           <th>Problem title</th>
+          <th>Description</th>
           <th>solved</th>
         </tr>
       </thead>
@@ -15,6 +16,7 @@
           @click.prevent="goToProblem(index)"
         >
           <td>{{ problem.problemTitle }}</td>
+          <td>{{ problem.description }}</td>
           <td>{{ problem.solved ? "yes" : "no" }}</td>
         </tr>
       </tbody>
