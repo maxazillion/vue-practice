@@ -1,14 +1,14 @@
 <template>
   <div class="container profile">
-    <div class="row">
-      <div class="col-md-4">
+    <div style="display: flex; flex-direction: row">
+      <div class="me-3">
         <img
           class="profile-picture"
           src="../assets/JasonProfilePicture.png"
           alt="Profile Picture"
         />
       </div>
-      <div class="col-md-8">
+      <div>
         <div class="personal-info">
           <h1>{{ fullName }}</h1>
           <h4>{{ jobTitle }}</h4>
