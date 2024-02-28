@@ -1,7 +1,7 @@
 <template>
   <div class="container profile">
     <div style="display: flex; flex-direction: row">
-      <div class="me-3">
+      <div style="margin-right: 30px">
         <img
           class="profile-picture"
           src="../assets/JasonProfilePicture.png"
@@ -46,6 +46,13 @@
         <h5>{{ security.clearanceLevel }}</h5>
         <b>{{ security.clearanceReason }} - {{ security.year }}</b>
       </div>
+    </div>
+    <div class="project">
+      <h2>React Project</h2>
+      <a href="https://jason-rodgers-react-project.netlify.app/"
+        >This react project contains a few fun projects I have been working
+        on</a
+      >
     </div>
   </div>
 </template>
@@ -143,6 +150,10 @@ export default {
 }
 
 .clearance h2 {
+  margin-top: 30px;
+}
+
+.project h2 {
   margin-top: 30px;
 }
 </style>
