@@ -2,6 +2,11 @@
   <div class="container">
     <h2>Wordle Helper</h2>
     <p>Use this to help solve wordles</p>
+    <p>
+      Click the guesses or enter them manually. Click the colored boxes to match
+      the wordle colors to generate good guesses.
+    </p>
+    <button class="btn btn-primary" @click.prevent="handleReset">Reset</button>
     <div class="row justify-content-center pt-3">
       <div class="col-md-4">
         <div class="options">
@@ -81,6 +86,14 @@ export default {
     };
   },
   methods: {
+    handleReset() {
+      this.possibleOptions = ["water", "trick", "amber", "pluto", "shake"];
+      this.guesses = [];
+      this.excludedLetters = [];
+      this.excludedLettersPerSlot = [[], [], [], [], []];
+      this.neededLetters = [];
+      this.neededLettersPerSlot = ["", "", "", "", ""];
+    },
     handleInput(index, event) {
       if (event.target.value.length === 1 && index < this.boxes.length - 1) {
         this.$nextTick(() => {
