@@ -40,6 +40,15 @@
             >Problems
           </router-link>
         </li>
+        <li>
+          <router-link
+            to="/wordle"
+            active-class="active"
+            class="nav-link m-2"
+            aria-current="page"
+            >Wordle
+          </router-link>
+        </li>
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="changeTheme()">

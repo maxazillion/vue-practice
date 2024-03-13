@@ -8,6 +8,7 @@ import GeeksForGeeksList from "./views/GeeksForGeeksList.vue";
 import ViewGeeksForGeeksProblems from "./views/ViewGeeksForGeeksProblems.vue";
 import ProblemsView from "./views/ProblemsView.vue";
 import AboutMe from "./views/AboutMe.vue";
+import WordleSolver from "./views/WordleSolver";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -39,6 +40,10 @@ const router = createRouter({
         },
       ],
     }, // passes params as props
+    {
+      path: "/wordle",
+      component: WordleSolver,
+    },
   ],
 });
 
