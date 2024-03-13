@@ -2,6 +2,16 @@ var words = require("an-array-of-english-words");
 
 const guesses = words.filter((d) => d.length === 5);
 
+function countOccurrences(arr, val) {
+  let count = 0;
+  arr.forEach((item) => {
+    if (item === val) {
+      count++;
+    }
+  });
+  return count;
+}
+
 function goodGuesses(
   neededLetters,
   neededLettersPerSlot,
@@ -14,6 +24,11 @@ function goodGuesses(
     // yellow letters
     neededLetters.forEach((neededLetter) => {
       if (word.indexOf(neededLetter) === -1) {
+        isBadWord = true;
+      } else if (
+        countOccurrences(Array.from(word), neededLetter) <
+        countOccurrences(neededLetters, neededLetter)
+      ) {
         isBadWord = true;
       }
     });

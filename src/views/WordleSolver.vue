@@ -129,16 +129,22 @@ export default {
         guessData.breakdown[breakdownIndex] += 1;
       }
 
-      const excludedNeededLetters = [...this.neededLettersPerSlot];
-      const excludedNeededLettersPerSlot = [...this.neededLettersPerSlot];
+      // remove all instances of entered letters from the included in order to get the count of each number correct
+      const extenedNeededLetters = [
+        ...this.neededLetters.filter(
+          (letter) => !guessData.word.includes(letter)
+        ),
+      ];
+
+      const extenededNeededLettersPerSlot = [...this.neededLettersPerSlot];
       const extendExcludedLetters = [...this.excludedLetters];
       const extendExcludedLettersPerSlot = [...this.excludedLettersPerSlot];
 
       guessData.breakdown.forEach((number, index) => {
         switch (number) {
           case 1:
-            excludedNeededLettersPerSlot[index] = guessData.word[index];
-            excludedNeededLetters.push(guessData.word[index]);
+            extenededNeededLettersPerSlot[index] = guessData.word[index];
+            extenedNeededLetters.push(guessData.word[index]);
             if (extendExcludedLetters.includes(guessData.word[index])) {
               extendExcludedLetters.splice(
                 extendExcludedLetters.indexOf(guessData.word[index]),
@@ -150,8 +156,13 @@ export default {
             }
             break;
           case 2:
-            excludedNeededLetters.push(guessData.word[index]);
+            extenedNeededLetters.push(guessData.word[index]);
             extendExcludedLettersPerSlot[index] = guessData.word[index];
+            if (
+              extenededNeededLettersPerSlot[index] === guessData.word[index]
+            ) {
+              extenededNeededLettersPerSlot[index] = "";
+            }
             if (extendExcludedLetters.includes(guessData.word[index])) {
               extendExcludedLetters.splice(
                 extendExcludedLetters.indexOf(guessData.word[index]),
@@ -160,7 +171,10 @@ export default {
             }
             break;
           case 0:
-            if (!extendExcludedLetters.includes(guessData.word[index]))
+            if (
+              !extendExcludedLetters.includes(guessData.word[index]) &&
+              !extenedNeededLetters.includes(guessData.word[index])
+            )
               extendExcludedLetters.push(guessData.word[index]);
             break;
           default:
@@ -170,12 +184,12 @@ export default {
 
       this.excludedLetters = extendExcludedLetters;
       this.excludedLettersPerSlot = extendExcludedLettersPerSlot;
-      this.excludedNeededLetters = excludedNeededLetters;
-      this.excludedNeededLettersPerSlot = excludedNeededLettersPerSlot;
+      this.neededLetters = extenedNeededLetters;
+      this.neededLettersPerSlot = extenededNeededLettersPerSlot;
 
       this.possibleOptions = goodGuesses(
-        excludedNeededLetters,
-        excludedNeededLettersPerSlot,
+        extenedNeededLetters,
+        extenededNeededLettersPerSlot,
         extendExcludedLetters,
         extendExcludedLettersPerSlot
       );
