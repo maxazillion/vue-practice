@@ -12,17 +12,19 @@
         <div class="options">
           <h4>Possible Options:</h4>
 
-          <table class="table table-hover">
-            <tbody>
-              <tr
-                v-for="(option, index) in possibleOptions"
-                :key="index"
-                @click.prevent="handleOptionsClick(option)"
-              >
-                <td>{{ option }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div :class="{ fixed_height: possibleOptions.length > 9 }">
+            <table class="table table-hover">
+              <tbody>
+                <tr
+                  v-for="(option, index) in possibleOptions"
+                  :key="index"
+                  @click.prevent="handleOptionsClick(option)"
+                >
+                  <td>{{ option }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="col-md-4">
@@ -46,13 +48,18 @@
         <div class="options">
           <h4>Guesses:</h4>
           <ul>
-            <li v-for="(guess, index) in guesses" :key="index">
+            <li
+              v-for="(guess, index) in guesses"
+              :key="index"
+              class="list-item-with-border"
+            >
               <input
                 v-for="(guessBreakdown, indexBreakdown) in guess.breakdown"
                 :key="indexBreakdown"
                 v-model="Array.from(guess.word)[indexBreakdown]"
                 :class="colorCode[guessBreakdown]"
                 class="wordle-box"
+                readonly
                 :maxlength="1"
                 ref="inputs"
                 @click="
@@ -221,6 +228,11 @@ export default {
   padding: 0px;
 }
 
+.fixed_height {
+  height: 250px;
+  overflow-y: scroll;
+}
+
 .options ul {
   list-style-type: none;
   padding: 0;
@@ -247,5 +259,10 @@ export default {
 
 .table.table-hover tr:hover {
   cursor: pointer;
+}
+
+.list-item-with-border {
+  border-top: 1px solid black;
+  padding-top: 5px;
 }
 </style>
