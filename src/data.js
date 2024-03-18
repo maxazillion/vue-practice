@@ -1473,6 +1473,36 @@ export default {
       console.log(maximumOccuredV5([1, 4, 3, 1], [15, 8, 5, 4], 4, 15));`,
     },
     {
+      problemTitle: "Second largest number",
+      solved: true,
+      description: "find the second largest number",
+      code: `    print2largest(arr,n){
+        //code here
+        let largest = null
+        let secondLargest = null
+        
+        for(let i = 0; i < n; i++){
+            if(!largest){
+                largest = arr[i]
+            } else {
+                if(arr[i] > largest){
+                    secondLargest = largest
+                    largest = arr[i]
+                }
+            }
+            if(largest > arr[i] && secondLargest < arr[i]){
+                secondLargest = arr[i]
+            }
+        }
+        
+        if(!secondLargest){
+            return -1
+        } else{
+            return secondLargest
+        }
+    }`,
+    },
+    {
       problemTitle: "Remove N for Smallest Number",
       solved: false,
       description: "Make smallest number out of array by removing N numbers",
